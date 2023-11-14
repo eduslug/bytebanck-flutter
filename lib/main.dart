@@ -1,27 +1,65 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-      home: Scaffold(
-    appBar: AppBar(
-      title: Text('transferencia de crédito'),
-    ),
-    body: ListaTrasferencia(),
-    floatingActionButton: FloatingActionButton(
-      onPressed: () {},
-      child: Icon(Icons.add),
-    ),
-  )));
+  runApp(BytebankApp());
+}
+
+class BytebankApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+      body: FormularioTransfencia(),
+    ));
+  }
+}
+
+class FormularioTransfencia extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('criando transferência'),
+        ),
+        body: Column(
+          children: <Widget>[
+            TextField(
+              style: TextStyle(fontSize: 24.0),
+              decoration: InputDecoration(
+                  labelText: 'Numero da conta', hintText: '1000'),
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'teste'),
+            ),
+            TextButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              ),
+              onPressed: () {},
+              child: Text('Treansferencia'),
+            )
+          ],
+        ));
+  }
 }
 
 class ListaTrasferencia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Column(children: <Widget>[
-      ItensTransferencias(Transferencia(100.0, 1000)),
-      ItensTransferencias(Transferencia(2220, 5555)),
-    ]);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('transferencia de crédito'),
+      ),
+      body: Column(children: <Widget>[
+        ItensTransferencias(Transferencia(100.0, 1000)),
+        ItensTransferencias(Transferencia(2220, 5555)),
+      ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
 
